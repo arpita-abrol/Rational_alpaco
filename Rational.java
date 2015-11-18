@@ -1,4 +1,4 @@
-//Arpita Abrol,  Niels Graham
+//Arpita Abrol,  Vincent Liok
 //APCS1 pd10
 //HW32 -- Irrationality Stops Here
 //2015-11-18
@@ -62,7 +62,7 @@ public class Rational {
     }
 
     //divide
-    public void divide( Rational num) {
+    public void divide( Rational num ) {
 	int num1Num = this.numerator;
 	int num1Den = this.denominator;
 	int num2Num = num.numerator;
