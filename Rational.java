@@ -1,7 +1,7 @@
 //Arpita Abrol,  Vincent Liok
 //APCS1 pd10
-//HW32 -- Irrationality Stops Here
-//2015-11-18
+//HW33 -- Do You Even Add, Bro?
+//2015-11-19
 
 public class Rational {
     
@@ -69,6 +69,21 @@ public class Rational {
 	int num2Den = num.denominator;
 	this.numerator = num1Num * num2Den;
 	this.denominator = num1Den * num2Num;
+    }
+
+    //uses Euclid's algorithim to find GCD
+    public static int gcd(int a, int b){
+	if ((a == 0) || (b == 0)){
+	    return 0;
+	}
+	int min = min(a,b);
+	int max = max(a,b);
+	if ((max % min)==0){
+	    return min;
+	}
+	else{
+	    return gcdER(min,(max % min));
+	}
     }
 
 
