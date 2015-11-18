@@ -25,8 +25,7 @@ public class Rational {
 	    numerator = a;
 	    denominator = b;
 	}
-    }
-	    
+    }	    
 	    
     
     //mutators
@@ -46,12 +45,12 @@ public class Rational {
 	return numerator + "/" + denominator;
     }
 
-    //return as a floating point 
+    //return rational as a floating point 
     public static float floatValue(Rational num){
 	return (float)num.numerator/num.denominator;
     }
     
-    //multiply
+    //multiply rationals
     public void multiply( Rational num ) {
 	int num1Num = this.numerator;
 	int num1Den = this.denominator;
@@ -61,7 +60,7 @@ public class Rational {
 	this.denominator = num1Den * num2Den;
     }
 
-    //divide
+    //divide rationals
     public void divide( Rational num ) {
 	int num1Num = this.numerator;
 	int num1Den = this.denominator;
@@ -69,6 +68,39 @@ public class Rational {
 	int num2Den = num.denominator;
 	this.numerator = num1Num * num2Den;
 	this.denominator = num1Den * num2Num;
+    }
+
+    //add rationals
+
+    //subtract rationals
+    public void subtract( Rational num ) {
+	int num1Num = this.numerator * num.denominator;
+	int num1Den = this.denominator * num.denominator;
+	int num2Num = num.numerator * this.denominator;
+	int num2Den = num.denominator * this.denominator;
+	this.numerator = (num1Num - num2Num);
+	this.denominator = num1Den;
+	this.reduce();
+    }
+
+    //returms min of two nums
+    public static int max(int a, int b){
+	if (a > b){
+	    return a;
+	}
+	else{
+	    return b;
+	}
+    }
+
+    //returns max of two nums
+    public static int min(int a, int b){
+	if (a < b){
+	    return a;
+	}
+	else{
+	    return b;
+	}
     }
 
     //uses Euclid's algorithim to find GCD
@@ -82,28 +114,49 @@ public class Rational {
 	    return min;
 	}
 	else{
-	    return gcdER(min,(max % min));
+	    return gcd(min,(max % min));
 	}
+    }
+
+    //reduces a rational--rational given in params
+    public static void reduce( Rational number ) {
+	int num = number.numerator;
+	int den = number.denominator;
+	int theGCD = gcd(num, den);
+	num = num / theGCD;
+	den = den / theGCD;
+	number.numerator = num;
+	number.denominator = den;
+    }
+
+    //reduces a rational--no params needed (use this)
+    public void reduce() {
+	int num = this.numerator;
+	int den = this.denominator;
+	int theGCD = gcd(num, den);
+	num = num / theGCD;
+	den = den / theGCD;
+	this.numerator = num;
+	this.denominator = den;
     }
 
 
     //main method
     public static void main( String[]args ) {
-	Rational bob = new Rational();
-	Rational emma = new Rational();
-	Rational kevin = new Rational(4, 9);
-	Rational Jimbo = new Rational(2, 7);
-	emma.setNum(10);
-	bob.setNum(3);
-	bob.setDen(5);
-	System.out.println( emma + "\n" + bob);
-	emma.multiply( bob );
-	System.out.println( emma );
-	System.out.println(floatValue(emma));
-	System.out.println( kevin + "\n" + Jimbo);
-	kevin.divide(Jimbo);
-	System.out.println(kevin);
-	
+	Rational bob = new Rational(1,3);
+	Rational emma = new Rational(2,6);
+	Rational kevin = new Rational(1,9);
+	Rational jimbo = new Rational(3,6);
+	Rational alex = new Rational(2,4);
+	System.out.println( bob + "\n" + emma + "\n" + kevin + "\n" + jimbo );
+	//bob.add(emma);
+	//System.out.println( "bob + emma = " + bob);
+	emma.subtract(kevin);
+	System.out.println( "emma - kevin = " + emma);
+	jimbo.reduce();
+	System.out.println( jimbo );
+	reduce(alex);
+	System.out.println( alex );
     }
     
 }//end class
