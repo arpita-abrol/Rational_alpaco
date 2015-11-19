@@ -127,6 +127,7 @@ public class Rational {
 	}
     }
 
+
     //reduces a rational--rational given in params
     public static void reduce( Rational number ) {
 	int num = number.numerator;
@@ -149,20 +150,6 @@ public class Rational {
 	this.denominator = den;
     }
 
-    public int compareTo( Rational num ) {
-	double callingNum = (double)(this.numerator / this.denominator);
-	double param = (double)(num.numerator / num.denominator);
-	if (callingNum == param) {
-	    return 0;
-	}
-	else if (callingNum > param) {
-	    return 1;
-	}
-	else {
-	    return -1;
-	}
-    }
-
 
     //main method
     public static void main( String[]args ) {
@@ -171,9 +158,10 @@ public class Rational {
 	Rational kevin = new Rational(1,9);
 	Rational jimbo = new Rational(3,6);
 	Rational alex = new Rational(2,4);
+	Rational emily = new Rational(3,4);
 	System.out.println( bob + "\n" + emma + "\n" + kevin + "\n" + jimbo );
-	//bob.add(emma);
-	//System.out.println( "bob + emma = " + bob);
+	bob.add(emma);
+	System.out.println( "bob + emma = " + bob);
 	emma.subtract(kevin);
 	System.out.println( "emma - kevin = " + emma);
 	jimbo.reduce();
