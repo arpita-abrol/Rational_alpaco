@@ -127,6 +127,10 @@ public class Rational {
 	}
     }
 
+    //given numerator + denominator, finds gcd
+    public static int gcdReduce( int num, int den ) {
+	return gcd(num,den);
+    }
 
     //reduces a rational--rational given in params
     public static void reduce( Rational number ) {
@@ -150,6 +154,21 @@ public class Rational {
 	this.denominator = den;
     }
 
+    //compares a rational (given in param) to the calling rational
+    public int compareTo( Rational num ) {
+	float callingNum = floatValue(this);
+	float param = floatValue(num);
+	if (callingNum == param) {
+	    return 0;
+	}
+	else if (callingNum > param) {
+	    return 1;
+	}
+	else {
+	    return -1;
+	}
+    }
+
 
     //main method
     public static void main( String[]args ) {
@@ -168,6 +187,10 @@ public class Rational {
 	System.out.println( jimbo );
 	reduce(alex);
 	System.out.println( alex );
+	System.out.println( jimbo.compareTo(alex) );
+	System.out.println( jimbo.compareTo(kevin) );
+	System.out.println( jimbo.compareTo(emily) );
+	System.out.println( gcdReduce(5,35) );
     }
     
 }//end class
