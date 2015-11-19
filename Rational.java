@@ -71,6 +71,15 @@ public class Rational {
     }
 
     //add rationals
+    public void add( Rational num ) {
+	int num1Num = this.numerator * num.denominator;
+	int num1Den = this.denominator * num.denominator;
+	int num2Num = num.numerator * this.denominator;
+	int num2Den = num.denominator * this.denominator;
+	this.numerator = (num1Num + num2Num);
+	this.denominator = num1Den;
+	this.reduce();
+    }
 
     //subtract rationals
     public void subtract( Rational num ) {
@@ -138,6 +147,20 @@ public class Rational {
 	den = den / theGCD;
 	this.numerator = num;
 	this.denominator = den;
+    }
+
+    public int compareTo( Rational num ) {
+	double callingNum = (double)(this.numerator / this.denominator);
+	double param = (double)(num.numerator / num.denominator);
+	if (callingNum == param) {
+	    return 0;
+	}
+	else if (callingNum > param) {
+	    return 1;
+	}
+	else {
+	    return -1;
+	}
     }
 
 
