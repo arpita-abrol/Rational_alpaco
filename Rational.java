@@ -1,7 +1,7 @@
-//Arpita Abrol,  Vincent Liok
+//Team Noname -- Arpita Abrol, Sebastian Dittgen
 //APCS1 pd10
-//HW33 -- Do You Even Add, Bro?
-//2015-11-19
+//HW37 -- Rational Equality
+//2015-11-25
 
 public class Rational {
     
@@ -26,7 +26,7 @@ public class Rational {
 	    denominator = b;
 	}
     }	    
-	    
+
     
     //mutators
     public void setNum( int num ) {
@@ -45,9 +45,21 @@ public class Rational {
 	return numerator + "/" + denominator;
     }
 
+    //overrides equals method
+    public boolean equals(Object val){
+    	boolean retVal = this == val;
+    	if (!retVal){
+	    if (val instanceof Rational){
+		retVal = this.numerator == ((Rational)val).numerator
+		    && this.denominator == ((Rational)val).denominator;
+	    }
+	}
+    	return retVal;
+    }
+
     //return rational as a floating point 
-    public static float floatValue(Rational num){
-	return (float)num.numerator/num.denominator;
+    public static double floatValue(Rational num){
+	return (double)num.numerator/num.denominator;
     }
     
     //multiply rationals
@@ -156,8 +168,8 @@ public class Rational {
 
     //compares a rational (given in param) to the calling rational
     public int compareTo( Rational num ) {
-	float callingNum = floatValue(this);
-	float param = floatValue(num);
+	double callingNum = floatValue(this);
+	double param = floatValue(num);
 	if (callingNum == param) {
 	    return 0;
 	}
@@ -178,6 +190,10 @@ public class Rational {
 	Rational jimbo = new Rational(3,6);
 	Rational alex = new Rational(2,4);
 	Rational emily = new Rational(3,4);
+	Rational amy = new Rational(3,4);
+	Rational jo = new Rational(3,4);	
+	Rational beth = new Rational(6,8);
+	String meg = "lemons";
 	System.out.println( bob + "\n" + emma + "\n" + kevin + "\n" + jimbo );
 	bob.add(emma);
 	System.out.println( "bob + emma = " + bob);
@@ -191,6 +207,9 @@ public class Rational {
 	System.out.println( jimbo.compareTo(kevin) );
 	System.out.println( jimbo.compareTo(emily) );
 	System.out.println( gcdReduce(5,35) );
+	System.out.println( amy.equals(jo) );
+	System.out.println( amy.equals(beth) );
+	System.out.println( amy.equals(meg) );
     }
     
 }//end class
