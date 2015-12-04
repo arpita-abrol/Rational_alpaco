@@ -1,9 +1,9 @@
-//Team Noname -- Arpita Abrol, Sebastian Dittgen
+//Team  -- Arpita Abrol, Jannie Li
 //APCS1 pd10
-//HW37 -- Rational Equality
-//2015-11-25
+//HW41 -- In America, the Driver Sits on the Left
+//2015-12-04
 
-public class Rational {
+public class Rational implements Comparable{
     
     //instance vars
     private int numerator;
@@ -167,7 +167,12 @@ public class Rational {
     }
 
     //compares a rational (given in param) to the calling rational
-    public int compareTo( Rational num ) {
+    public int compareTo( Object o ) {
+        if (!(o instanceof Rational)){
+	    return 111;
+	}
+	Rational num = new Rational();
+	num = (Rational)o;
 	double callingNum = floatValue(this);
 	double param = floatValue(num);
 	if (callingNum == param) {
